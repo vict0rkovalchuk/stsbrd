@@ -1,0 +1,71 @@
+{{ 'custom-footer.css' | asset_url | stylesheet_tag }}
+
+<footer class="custom-footer">
+  <div class="page-width">
+    <div class="custom-footer-cols">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'menu' %}
+            <div class="custom-footer-menu custom-footer-col">
+              <ul>
+                {% for link in block.settings.link_list.links %}
+                  <li>
+                    <a href="{{ link.url }}">{{ link.title }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% when 'socials' %}
+            <div class="custom-footer-socials custom-footer-col">
+              {%- render 'social-icons', class: 'custom-footer-socials-list' -%}
+            </div>
+          {% when 'sign_up_form' %}
+            <div class="custom-footer-form custom-footer-col">
+              <form action="#">
+                <input type="text" placeholder="Email">
+              </form>
+            </div>
+        {% endcase %}
+      {% endfor %}
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+  {
+    "name": "Custom Footer",
+    "settings": [],
+    "enabled_on": {
+      "groups": ["footer"]
+    },
+    "blocks": [
+      {
+        "type": "menu",
+        "name": "Menu",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "link_list",
+            "id": "link_list",
+            "label": "Menu"
+          }
+        ]
+      },
+      {
+        "type": "socials",
+        "name": "Socials",
+        "limit": 1
+      },
+      {
+        "type": "sign_up_form",
+        "name": "Sign Up Form",
+        "limit": 1
+      }
+    ],
+    "presets": [
+      {
+        "name": "Custom Footer"
+      }
+    ]
+  }
+{% endschema %}
