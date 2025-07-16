@@ -1,0 +1,161 @@
+{{ 'custom-announcement-bar.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+  assign speed = section.settings.speed
+  assign infinite = section.settings.infinite
+  assign autoplay = section.settings.autoplay
+  assign autoplay_speed = section.settings.autoplay_speed
+  assign draggable = section.settings.draggable
+  assign pause_on_hover = section.settings.pause_on_hover
+  assign vertical = section.settings.vertical
+  assign vertical_swiping = section.settings.vertical_swiping
+
+  assign section_blocks = section.blocks
+%}
+
+{% if section_blocks.size > 0 %}
+  <div class="custom-announcement-bar custom-announcement-bar--loading js-custom-announcement-bar">
+    {% for block in section_blocks %}
+      {% liquid
+        assign text = block.settings.text
+        assign url = block.settings.url
+        assign bg_color = block.settings.bg_color
+      %}
+
+      {% if text != blank %}
+        <div id="block-{{ block.id }}" class="custom-announcement-bar-slide" style="--block-background: {{ bg_color | default: 'transparent' }}">
+          {% if url != blank %}
+            <a href="{{ url }}" class="custom-announcement-bar-slide-content">
+              {{ text }}
+            </a>
+          {% else %}
+            <div class="custom-announcement-bar-slide-content">
+              {{ text }}
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+{% endif %}
+
+<script>
+  $(document).ready(function(){
+    $('.js-custom-announcement-bar')
+      .on('init', function(){
+        $(this).removeClass('custom-announcement-bar--loading');
+      })
+      .slick({
+        infinite: {{ infinite }},
+        speed: {{ speed }} * 1000,
+        autoplay: {{ autoplay }},
+        autoplaySpeed: {{ autoplay_speed }} * 1000,
+        draggable: {{ draggable }},
+        pauseOnHover: {{ pause_on_hover }},
+        vertical: {{ vertical }},
+        {% if draggable %}
+          verticalSwiping: {{ vertical_swiping }},
+        {% endif %}
+        arrows: false
+      });
+  });
+</script>
+
+{% schema %}
+  {
+    "name": "Custom Announcement Bar",
+    "settings": [
+      {
+        "type": "range",
+        "id": "speed",
+        "label": "Speed",
+        "max": 5,
+        "min": 0.1,
+        "step": 0.1,
+        "unit": "s",
+        "default": 1
+      },
+      {
+        "type": "checkbox",
+        "id": "infinite",
+        "label": "Infinite",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "autoplay",
+        "label": "Autoplay",
+        "default": true
+      },
+      {
+        "type": "range",
+        "id": "autoplay_speed",
+        "label": "Autoplay Speed",
+        "max": 5,
+        "min": 0.1,
+        "step": 0.1,
+        "unit": "s",
+        "default": 1,
+        "visible_if": "{{ section.settings.autoplay == true }}"
+      },
+      {
+        "type": "checkbox",
+        "id": "draggable",
+        "label": "Draggable",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "pause_on_hover",
+        "label": "Pause on Hover",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "vertical",
+        "label": "Vertical",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "vertical_swiping",
+        "label": "Vertical Swiping",
+        "default": false,
+        "visible_if": "{{ section.settings.draggable == true }}"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Slide",
+        "type": "slide",
+        "settings": [
+          {
+            "type": "text",
+            "id": "text",
+            "label": "Text"
+          },
+          {
+            "type": "url",
+            "id": "url",
+            "label": "URL",
+            "info": "Leave empty to make no linkable"
+          },
+          {
+            "type": "color",
+            "id": "bg_color",
+            "label": "Background Color",
+            "info": "Background color of the announcement"
+          }
+        ]
+      }
+    ],
+    "enabled_on": {
+      "groups": ["header"]
+    },
+    "presets": [
+      {
+        "name": "Custom Announcement Bar"
+      }
+    ]
+  }
+{% endschema %}

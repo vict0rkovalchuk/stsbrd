@@ -1,0 +1,27 @@
+.custom-announcement-bar {
+  opacity: 1;
+  visibility: visible;
+  height: auto;
+  min-height: 52.8px;
+  transition: opacity 0.5s ease;
+}
+
+.custom-announcement-bar--loading {
+  opacity: 0;
+  visibility: hidden;
+  height: 0;
+  overflow: hidden;
+}
+
+.custom-announcement-bar-slide {
+  padding: 12px 32px;
+  background-color: var(--block-background);
+}
+
+.custom-announcement-bar-slide-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: inherit;
+}
