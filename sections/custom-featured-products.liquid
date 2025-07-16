@@ -12,7 +12,7 @@
   assign padding_bottom_mobile = section.settings.padding_bottom_mobile
 %}
 
-<style>
+{% style %}
   .custom-featured-products {
     padding-top: {{ padding_top_desktop }}px;
     padding-bottom: {{ padding_bottom_desktop }}px;
@@ -31,7 +31,7 @@
       padding-bottom: {{ padding_bottom_mobile }}px;
     }
   }
-</style>
+{% endstyle %}
 
 {% if featured_collection.products.size > 0 %}
   <div class="custom-featured-products page-width scroll-trigger animate--slide-in">
