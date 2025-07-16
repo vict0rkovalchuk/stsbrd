@@ -39,10 +39,13 @@
         "image_overlay_opacity": 40,
         "image_height": "large",
         "image_behavior": "none",
+        "image_behavior": "none",
         "desktop_content_position": "bottom-center",
         "desktop_content_alignment": "center",
         "show_text_box": false,
+        "show_text_box": false,
         "color_scheme": "scheme-3",
+        "stack_images_on_mobile": false,
         "stack_images_on_mobile": false,
         "mobile_content_alignment": "center",
         "show_text_below": false
@@ -50,7 +53,10 @@
     },
     "featured_collection": {
       "type": "featured-collection",
+      "disabled": true,
       "settings": {
+        "collection": "all",
+        "products_to_show": 8,
         "collection": "all",
         "products_to_show": 8,
         "title": "Featured products",
@@ -60,9 +66,11 @@
         "description_style": "body",
         "columns_desktop": 4,
         "enable_desktop_slider": false,
+        "enable_desktop_slider": false,
         "full_width": false,
         "show_view_all": true,
         "view_all_style": "solid",
+        "color_scheme": "scheme-1",
         "color_scheme": "scheme-1",
         "image_ratio": "adapt",
         "image_shape": "default",
@@ -72,29 +80,23 @@
         "quick_add": "none",
         "columns_mobile": "2",
         "swipe_on_mobile": false,
+        "swipe_on_mobile": false,
         "padding_top": 44,
         "padding_bottom": 36
       }
     },
-    "1752641677404ad3c1": {
-      "type": "apps",
-      "blocks": {
-        "socialwidget_instafeed_base_widget_DRHhhR": {
-          "type": "shopify://apps/socialwidget-instafeed/blocks/base-widget/508b8d5b-b176-4dc6-a0ba-2b222db6eb79",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "socialwidget_instafeed_base_widget_DRHhhR"
-      ],
+    "custom_featured_products_HCDJLd": {
+      "type": "custom-featured-products",
+      "name": "Custom Featured Products",
       "settings": {
-        "include_margins": true
+        "featured_collection": "featured-collection",
+        "products_to_show": 3
       }
     }
   },
   "order": [
     "image_banner",
     "featured_collection",
-    "1752641677404ad3c1"
+    "custom_featured_products_HCDJLd"
   ]
 }
