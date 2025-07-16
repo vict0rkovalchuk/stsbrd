@@ -3,10 +3,38 @@
 {% liquid
   assign featured_collection = section.settings.featured_collection
   assign products_to_show = section.settings.products_to_show
+
+  assign padding_top_desktop = section.settings.padding_top_desktop
+  assign padding_bottom_desktop = section.settings.padding_bottom_desktop
+  assign padding_top_tablet = section.settings.padding_top_tablet
+  assign padding_bottom_tablet = section.settings.padding_bottom_tablet
+  assign padding_top_mobile = section.settings.padding_top_mobile
+  assign padding_bottom_mobile = section.settings.padding_bottom_mobile
 %}
 
+<style>
+  .custom-featured-products {
+    padding-top: {{ padding_top_desktop }}px;
+    padding-bottom: {{ padding_bottom_desktop }}px;
+  }
+
+  @media only screen and (max-width: 990px) {
+    .custom-featured-products.page-width {
+      padding-top: {{ padding_top_tablet }}px;
+      padding-bottom: {{ padding_bottom_tablet }}px;
+    }
+  }
+
+  @media only screen and (max-width: 749px) {
+    .custom-featured-products.page-width {
+      padding-top: {{ padding_top_mobile }}px;
+      padding-bottom: {{ padding_bottom_mobile }}px;
+    }
+  }
+</style>
+
 {% if featured_collection.products.size > 0 %}
-  <div class="custom-featured-products page-width page-width-desktop scroll-trigger animate--slide-in">
+  <div class="custom-featured-products page-width scroll-trigger animate--slide-in">
     {% for product in featured_collection.products limit: products_to_show %}
       <a href="{{ product.url }}" class="custom-featured-product">
         <div class="custom-featured-product-image">
@@ -41,6 +69,66 @@
         "step": 1,
         "unit": "pc",
         "default": 4
+      },
+      {
+        "type": "range",
+        "id": "padding_top_desktop",
+        "label": "Padding Top Desktop",
+        "max": 100,
+        "min": 0,
+        "step": 1,
+        "unit": "px",
+        "default": 80
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_desktop",
+        "label": "Padding Bottom Desktop",
+        "max": 100,
+        "min": 0,
+        "step": 1,
+        "unit": "px",
+        "default": 80
+      },
+      {
+        "type": "range",
+        "id": "padding_top_tablet",
+        "label": "Padding Top Tablet",
+        "max": 100,
+        "min": 0,
+        "step": 1,
+        "unit": "px",
+        "default": 80
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_tablet",
+        "label": "Padding Bottom Tablet",
+        "max": 100,
+        "min": 0,
+        "step": 1,
+        "unit": "px",
+        "default": 80
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "label": "Padding Top Mobile",
+        "max": 100,
+        "min": 0,
+        "step": 1,
+        "unit": "px",
+        "default": 80
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "label": "Padding Bottom Mobile",
+        "max": 100,
+        "min": 0,
+        "step": 1,
+        "unit": "px",
+        "default": 80
       }
     ],
     "presets": [
