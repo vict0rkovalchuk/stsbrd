@@ -144,7 +144,7 @@
     "blocks": {
       "7709396684840320309": {
         "type": "shopify://apps/socialwidget-instafeed/blocks/social-widget/508b8d5b-b176-4dc6-a0ba-2b222db6eb79",
-        "disabled": true,
+        "disabled": false,
         "settings": {}
       }
     },
