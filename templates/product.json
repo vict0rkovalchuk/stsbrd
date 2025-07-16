@@ -49,6 +49,33 @@
           "type": "description",
           "settings": {}
         },
+        "collapsible_tab_JJDDyx": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Material",
+            "icon": "leather",
+            "content": "<p>{{ product.metafields.custom.material | metafield_tag }}</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_rRTaL8": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Shipping & Returns",
+            "icon": "truck",
+            "content": "<p>{{ product.metafields.custom.shipping | metafield_tag }}</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_PtKpih": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Care Instructions",
+            "icon": "heart",
+            "content": "<p>To maintain its quality, gently wipe the Black Leather Bag with a soft, dry cloth and store in a cool, dry place away from direct sunlight and moisture.</p>",
+            "page": ""
+          }
+        },
         "share": {
           "type": "share",
           "settings": {
@@ -64,6 +91,9 @@
         "quantity_selector",
         "buy_buttons",
         "description",
+        "collapsible_tab_JJDDyx",
+        "collapsible_tab_rRTaL8",
+        "collapsible_tab_PtKpih",
         "share"
       ],
       "settings": {
