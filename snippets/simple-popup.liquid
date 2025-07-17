@@ -1,0 +1,11 @@
+{{ 'simple-popup.css' | asset_url | stylesheet_tag }}
+{{ 'simple-popup.js' | asset_url | script_tag }}
+
+<div id="popup-wrapper" class="popup-wrapper hidden">
+  <div id="popup-overlay" class="popup-overlay">&nbsp;</div>
+
+  <div id="simple-popup" class="popup">
+    <button id="popup-close" class="popup-close">&times;</button>
+    <p>{{ settings.simple_popup_text }}</p>
+  </div>
+</div>

@@ -1451,5 +1451,16 @@
         "default": "scheme-1"
       }
     ]
+  },
+  {
+    "name": "Simple Popup",
+    "settings": [
+      {
+        "type": "text",
+        "id": "simple_popup_text",
+        "label": "Text",
+        "default": "Text"
+      }
+    ]
   }
 ]
