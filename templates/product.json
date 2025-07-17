@@ -58,6 +58,13 @@
             "page": ""
           }
         },
+        "essential_trust_badges_app_block_VFe3ML": {
+          "type": "shopify://apps/essential-trust-badges/blocks/app-block/0ff65b25-07e1-408e-950f-f54dd3d1751b",
+          "settings": {
+            "banner_display": "all",
+            "banner_id": "b053c8df-b9b9-4b1e-9f25-4a074da5a20c"
+          }
+        },
         "collapsible_tab_rRTaL8": {
           "type": "collapsible_tab",
           "settings": {
@@ -92,6 +99,7 @@
         "buy_buttons",
         "description",
         "collapsible_tab_JJDDyx",
+        "essential_trust_badges_app_block_VFe3ML",
         "collapsible_tab_rRTaL8",
         "collapsible_tab_PtKpih",
         "share"
