@@ -43,6 +43,8 @@
     <script src="{{ 'jquery-migrate-1.2.1.min.js' | asset_url }}"></script>
     <script src="{{ 'slick.min.js' | asset_url }}"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
     {{ content_for_header }}
 
     {%- liquid
@@ -264,6 +266,8 @@
     {{ 'slick.css' | asset_url | stylesheet_tag }}
     {{ 'slick-theme.css' | asset_url | stylesheet_tag }}
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+
     <link rel="stylesheet" href="{{ 'component-cart-items.css' | asset_url }}" media="print" onload="this.media='all'">
 
     {%- if settings.cart_type == 'drawer' -%}
@@ -380,7 +384,6 @@
     {%- if settings.cart_type == 'drawer' -%}
       <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
-
     {% render 'simple-popup' %}
   </body>
 </html>

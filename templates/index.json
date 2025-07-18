@@ -39,13 +39,10 @@
         "image_overlay_opacity": 40,
         "image_height": "large",
         "image_behavior": "none",
-        "image_behavior": "none",
         "desktop_content_position": "bottom-center",
         "desktop_content_alignment": "center",
         "show_text_box": false,
-        "show_text_box": false,
         "color_scheme": "scheme-3",
-        "stack_images_on_mobile": false,
         "stack_images_on_mobile": false,
         "mobile_content_alignment": "center",
         "show_text_below": false
@@ -57,8 +54,6 @@
       "settings": {
         "collection": "all",
         "products_to_show": 8,
-        "collection": "all",
-        "products_to_show": 8,
         "title": "Featured products",
         "heading_size": "h2",
         "description": "",
@@ -66,11 +61,9 @@
         "description_style": "body",
         "columns_desktop": 4,
         "enable_desktop_slider": false,
-        "enable_desktop_slider": false,
         "full_width": false,
         "show_view_all": true,
         "view_all_style": "solid",
-        "color_scheme": "scheme-1",
         "color_scheme": "scheme-1",
         "image_ratio": "adapt",
         "image_shape": "default",
@@ -79,7 +72,6 @@
         "show_rating": false,
         "quick_add": "none",
         "columns_mobile": "2",
-        "swipe_on_mobile": false,
         "swipe_on_mobile": false,
         "padding_top": 44,
         "padding_bottom": 36
@@ -90,13 +82,73 @@
       "name": "Custom Featured Products",
       "settings": {
         "featured_collection": "featured-collection",
-        "products_to_show": 3
+        "products_to_show": 3,
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 80,
+        "padding_top_tablet": 80,
+        "padding_bottom_tablet": 80,
+        "padding_top_mobile": 80,
+        "padding_bottom_mobile": 80
+      }
+    },
+    "swiper_slider_DRJRnh": {
+      "type": "swiper-slider",
+      "blocks": {
+        "slide_h9EyiR": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/putting-on-your-shoes_925x_d7caf40e-f4f9-406d-abf4-903e8a90e76b.jpg",
+            "description": "Slide 1 Description",
+            "vertical_aligning": "flex-start",
+            "horizontal_aligning": "flex-start",
+            "color": "#eaefe4",
+            "nav_label": "Slide Title 1"
+          }
+        },
+        "slide_LG3wqe": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/woman-in-the-city_925x_033e2960-a0d5-43b8-9614-348ebcacc89b.jpg",
+            "description": "Slide 2 Description",
+            "vertical_aligning": "center",
+            "horizontal_aligning": "center",
+            "color": "#334fb4",
+            "nav_label": "Slide Title 2"
+          }
+        },
+        "slide_jgKR6D": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/menswear-blue-zip-up-jacket_925x_dcf8f6a8-921c-4ac3-bd42-70309d5c2011.jpg",
+            "description": "Slide 3 Description",
+            "vertical_aligning": "flex-end",
+            "horizontal_aligning": "flex-end",
+            "color": "#dd1616",
+            "nav_label": "Slide Title 3"
+          }
+        }
+      },
+      "block_order": [
+        "slide_h9EyiR",
+        "slide_LG3wqe",
+        "slide_jgKR6D"
+      ],
+      "name": "Swiper Slider",
+      "settings": {
+        "bg_color": "#ca6d6d",
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 80,
+        "padding_top_tablet": 60,
+        "padding_bottom_tablet": 60,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
       }
     }
   },
   "order": [
     "image_banner",
     "featured_collection",
-    "custom_featured_products_HCDJLd"
+    "custom_featured_products_HCDJLd",
+    "swiper_slider_DRJRnh"
   ]
 }
