@@ -1,0 +1,259 @@
+{{ 'swiper-slider.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'swiper-slider.js' | asset_url }}" defer="defer"></script>
+
+{% liquid
+  assign bg_color = section.settings.bg_color
+
+  assign padding_top_desktop = section.settings.padding_top_desktop
+  assign padding_bottom_desktop = section.settings.padding_bottom_desktop
+  assign padding_top_tablet = section.settings.padding_top_tablet
+  assign padding_bottom_tablet = section.settings.padding_bottom_tablet
+  assign padding_top_mobile = section.settings.padding_top_mobile
+  assign padding_bottom_mobile = section.settings.padding_bottom_mobile
+%}
+
+{% style %}
+  .swiper-slider {
+    padding-top: {{ padding_top_desktop }}px;
+    padding-bottom: {{ padding_bottom_desktop }}px;
+  }
+
+  @media only screen and (max-width: 990px) {
+    .swiper-slider. {
+      padding-top: {{ padding_top_tablet }}px;
+      padding-bottom: {{ padding_bottom_tablet }}px;
+    }
+  }
+
+  @media only screen and (max-width: 749px) {
+    .swiper-slider. {
+      padding-top: {{ padding_top_mobile }}px;
+      padding-bottom: {{ padding_bottom_mobile }}px;
+    }
+  }
+{% endstyle %}
+
+<div class="swiper-slider">
+  <div class="page-width">
+    <div class="swiper-slider-wrapper">
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          {% for block in section.blocks %}
+            {% liquid
+              assign image  = block.settings.image
+              assign description  = block.settings.description
+              assign vertical_aligning  = block.settings.vertical_aligning
+              assign horizontal_aligning  = block.settings.horizontal_aligning
+              assign color  = block.settings.color
+            %}
+            
+            <div 
+              class="swiper-slide" 
+              data-image-url="{{ image.src | image_url }}" 
+              data-image-alt="{{ image.alt }}"
+              data-description="{{ description }}"
+              data-description-vertical-align="{{ vertical_aligning }}"
+              data-description-horizontal-align="{{ horizontal_aligning }}"
+              data-description-color="{{ color }}"
+            >
+              &nbsp;
+            </div>
+          {% endfor %}
+        </div>
+  
+        <div class="swiper-button-prev">
+          {% render 'arrow', type: 'prev' %}
+        </div>
+
+        <div class="swiper-button-next">
+          {% render 'arrow', type: 'next' %}
+        </div>
+      </div>
+
+      <div class="swiper-slider-content">
+        <div class="swiper-slider-content-image">
+          {% for block in section.blocks limit: 1 %}
+            {% liquid
+              assign image  = block.settings.image
+              assign description  = block.settings.description
+              assign vertical_aligning  = block.settings.vertical_aligning
+              assign horizontal_aligning  = block.settings.horizontal_aligning
+              assign color  = block.settings.color
+            %}
+            
+            <img src="{{ image.src | image_url }}" alt="{{ image.alt }}">
+
+            {% if description != blank %}
+              <div style="align-items: {{ vertical_aligning }}; justify-content: {{ horizontal_aligning }}; color: {{ color }}">
+                {{ description }}
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div class="swiper-slider-content-navigation" style="background-color: {{ bg_color }};">
+          {% for block in section.blocks %}
+            {% liquid
+              assign nav_label  = block.settings.nav_label
+            %}
+            
+            <span {% if forloop.index == 1 %}class="active"{% endif %}>
+              {% if nav_label != blank %}
+                {{ nav_label }}
+              {% else %}
+                {{ forloop.index }}
+              {% endif %}
+            </span>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Swiper Slider",
+    "settings": [
+      {
+        "type": "color",
+        "id": "bg_color",
+        "label": "Background Color"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_desktop",
+        "label": "Padding Top Desktop",
+        "max": 100,
+        "min": 0,
+        "step": 1,
+        "unit": "px",
+        "default": 80
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_desktop",
+        "label": "Padding Bottom Desktop",
+        "max": 100,
+        "min": 0,
+        "step": 1,
+        "unit": "px",
+        "default": 80
+      },
+      {
+        "type": "range",
+        "id": "padding_top_tablet",
+        "label": "Padding Top Tablet",
+        "max": 100,
+        "min": 0,
+        "step": 1,
+        "unit": "px",
+        "default": 80
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_tablet",
+        "label": "Padding Bottom Tablet",
+        "max": 100,
+        "min": 0,
+        "step": 1,
+        "unit": "px",
+        "default": 80
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "label": "Padding Top Mobile",
+        "max": 100,
+        "min": 0,
+        "step": 1,
+        "unit": "px",
+        "default": 80
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "label": "Padding Bottom Mobile",
+        "max": 100,
+        "min": 0,
+        "step": 1,
+        "unit": "px",
+        "default": 80
+      }
+    ],
+    "blocks": [
+      {
+        "type": "slide",
+        "name": "Slide",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "description",
+            "label": "Description",
+            "info": "Optional"
+          },
+          {
+            "type": "select",
+            "id": "vertical_aligning",
+            "label": "Align Vertical",
+            "options": [
+              {
+                "label": "Top",
+                "value": "flex-start"
+              },
+              {
+                "label": "Center",
+                "value": "center"
+              },
+              {
+                "label": "Bottom",
+                "value": "flex-end"
+              }
+            ],
+            "default": "flex-start"
+          },
+          {
+            "type": "select",
+            "id": "horizontal_aligning",
+            "label": "Align Horizontal",
+            "options": [
+              {
+                "label": "Start",
+                "value": "flex-start"
+              },
+              {
+                "label": "Center",
+                "value": "center"
+              },
+              {
+                "label": "End",
+                "value": "flex-end"
+              }
+            ],
+            "default": "flex-start"
+          },
+          {
+            "type": "color",
+            "id": "color",
+            "label": "Description Color"
+          },
+          {
+            "type": "text",
+            "id": "nav_label",
+            "label": "Navigation Item Label",
+            "info": "If empty the slide index will be displayed"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Swiper Slider"
+      }
+    ]
+  }
+{% endschema %}
