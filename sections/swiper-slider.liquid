@@ -41,20 +41,24 @@
           {% for block in section.blocks %}
             {% liquid
               assign image  = block.settings.image
+              assign show_hotspot_dot  = block.settings.show_hotspot_dot
               assign description  = block.settings.description
-              assign vertical_aligning  = block.settings.vertical_aligning
-              assign horizontal_aligning  = block.settings.horizontal_aligning
+              assign description_aligning  = block.settings.description_aligning
               assign color  = block.settings.color
+              assign x_position  = block.settings.x_position
+              assign y_position  = block.settings.y_position
             %}
-            
+
             <div 
               class="swiper-slide" 
               data-image-url="{{ image.src | image_url }}" 
               data-image-alt="{{ image.alt }}"
+              data-show-hotspot-dot="{{ show_hotspot_dot }}"
               data-description="{{ description }}"
-              data-description-vertical-align="{{ vertical_aligning }}"
-              data-description-horizontal-align="{{ horizontal_aligning }}"
+              data-description-aligning="{{ description_aligning }}"
               data-description-color="{{ color }}"
+              data-x-position="{{ x_position }}"
+              data-y-position="{{ y_position }}"
             >
               &nbsp;
             </div>
@@ -70,24 +74,30 @@
         </div>
       </div>
 
-      <div class="swiper-slider-content">
-        <div class="swiper-slider-content-image">
+      <div class="swiper-slider-content-wrapper">
+        <div class="swiper-slider-content">
           {% for block in section.blocks limit: 1 %}
             {% liquid
               assign image  = block.settings.image
+              assign show_hotspot_dot  = block.settings.show_hotspot_dot
               assign description  = block.settings.description
-              assign vertical_aligning  = block.settings.vertical_aligning
-              assign horizontal_aligning  = block.settings.horizontal_aligning
+              assign description_aligning  = block.settings.description_aligning
               assign color  = block.settings.color
+              assign x_position  = block.settings.x_position
+              assign y_position  = block.settings.y_position
             %}
-            
-            <img src="{{ image.src | image_url }}" alt="{{ image.alt }}">
 
-            {% if description != blank %}
-              <div style="align-items: {{ vertical_aligning }}; justify-content: {{ horizontal_aligning }}; color: {{ color }}">
-                {{ description }}
+            <img class="swiper-slider-content-image" src="{{ image.src | image_url }}" alt="{{ image.alt }}">
+
+            <div class="swiper-slider-content-dot-wrapper" style="{% unless show_hotspot_dot %}display: none;{% endunless %}">
+              <div class="swiper-slider-content-dot" style="left: {{ x_position }}%; top: {{ y_position }}%;">
+                {% if description != blank %}
+                  <p class="swiper-slider-content-description" style="text-align: {{ description_aligning }}; color: {{ color }};">
+                    {{ description }}
+                  </p>
+                {% endif %}
               </div>
-            {% endif %}
+            </div>
           {% endfor %}
         </div>
         <div class="swiper-slider-content-navigation" style="background-color: {{ bg_color }};">
@@ -191,55 +201,66 @@
             "label": "Image"
           },
           {
+            "type": "checkbox",
+            "label": "Show Hotspot Dot",
+            "id": "show_hotspot_dot",
+            "default": true
+          },
+          {
             "type": "text",
             "id": "description",
             "label": "Description",
-            "info": "Optional"
+            "info": "Optional",
+            "visible_if": "{{ block.settings.show_hotspot_dot == true }}"
           },
           {
             "type": "select",
-            "id": "vertical_aligning",
-            "label": "Align Vertical",
+            "id": "description_aligning",
+            "label": "Align Description",
             "options": [
               {
-                "label": "Top",
-                "value": "flex-start"
+                "label": "Left",
+                "value": "left"
               },
               {
                 "label": "Center",
                 "value": "center"
               },
               {
-                "label": "Bottom",
-                "value": "flex-end"
+                "label": "Right",
+                "value": "right"
               }
             ],
-            "default": "flex-start"
+            "default": "left",
+            "visible_if": "{{ block.settings.show_hotspot_dot == true }}"
           },
           {
-            "type": "select",
-            "id": "horizontal_aligning",
-            "label": "Align Horizontal",
-            "options": [
-              {
-                "label": "Start",
-                "value": "flex-start"
-              },
-              {
-                "label": "Center",
-                "value": "center"
-              },
-              {
-                "label": "End",
-                "value": "flex-end"
-              }
-            ],
-            "default": "flex-start"
+            "type": "range",
+            "id": "x_position",
+            "label": "X Position (%)",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "default": 50,
+            "unit": "%",
+            "visible_if": "{{ block.settings.show_hotspot_dot == true }}"
+          },
+          {
+            "type": "range",
+            "id": "y_position",
+            "label": "Y Position (%)",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "default": 50,
+            "unit": "%",
+            "visible_if": "{{ block.settings.show_hotspot_dot == true }}"
           },
           {
             "type": "color",
             "id": "color",
-            "label": "Description Color"
+            "label": "Description Color",
+            "visible_if": "{{ block.settings.show_hotspot_dot == true }}"
           },
           {
             "type": "text",

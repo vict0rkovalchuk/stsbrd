@@ -97,10 +97,12 @@
         "slide_h9EyiR": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/putting-on-your-shoes_925x_d7caf40e-f4f9-406d-abf4-903e8a90e76b.jpg",
-            "description": "Slide 1 Description",
-            "vertical_aligning": "flex-start",
-            "horizontal_aligning": "flex-start",
+            "image": "shopify://shop_images/woman-wades-in-ocean-at-sunset.jpg",
+            "show_hotspot_dot": true,
+            "description": "1) This is a full moon.",
+            "description_aligning": "left",
+            "x_position": 29,
+            "y_position": 37,
             "color": "#eaefe4",
             "nav_label": "Slide Title 1"
           }
@@ -109,10 +111,12 @@
           "type": "slide",
           "settings": {
             "image": "shopify://shop_images/woman-in-the-city_925x_033e2960-a0d5-43b8-9614-348ebcacc89b.jpg",
-            "description": "Slide 2 Description",
-            "vertical_aligning": "center",
-            "horizontal_aligning": "center",
-            "color": "#334fb4",
+            "show_hotspot_dot": true,
+            "description": "2) This is the nose of a woman with black flowing hair standing next to a portrait",
+            "description_aligning": "center",
+            "x_position": 65,
+            "y_position": 23,
+            "color": "#52d3be",
             "nav_label": "Slide Title 2"
           }
         },
@@ -120,10 +124,12 @@
           "type": "slide",
           "settings": {
             "image": "shopify://shop_images/menswear-blue-zip-up-jacket_925x_dcf8f6a8-921c-4ac3-bd42-70309d5c2011.jpg",
-            "description": "Slide 3 Description",
-            "vertical_aligning": "flex-end",
-            "horizontal_aligning": "flex-end",
-            "color": "#dd1616",
+            "show_hotspot_dot": true,
+            "description": "3) Transition from blue to the black",
+            "description_aligning": "right",
+            "x_position": 52,
+            "y_position": 48,
+            "color": "#9556f2",
             "nav_label": "Slide Title 3"
           }
         }
